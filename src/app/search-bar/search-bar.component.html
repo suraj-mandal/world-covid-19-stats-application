@@ -1,0 +1,40 @@
+<form class="mt-5">
+  <div class="form-group">
+    <input #auxiliarySearch type="text" placeholder="Search covid status by country"
+           class="form-control rounded-pill p-4 shadow-sm border-0"
+           (focus)="shiftToMainSearchDisplay($event)"
+    >
+  </div>
+</form>
+
+<div *ngIf="mainSearchDisplay" class="mainSearchDisplay">
+  <div class="d-flex flex-row pt-3 px-4 align-items-center">
+    <form class="mb-0" style="flex: 1;" (ngSubmit)="extractCountryDetails()">
+      <div class="form-group mb-0">
+        <input id="mainSearch" type="text" placeholder="Search for countries here" name="country"
+               [value]="countryName"
+               (input)="getCountriesList($event)"
+               class="form-control p-4 border-0" autofocus
+        >
+      </div>
+    </form>
+    <div>
+      <button (click)="switchToAuxiliarySearch($event)" class="btn"
+              style="font-size: 1.5rem;">
+        <span><i class="fas fa-times"></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="px-4 mt-3">
+    <div class="countryItem"
+         *ngFor="let currentCountry of filteredCountriesList">
+      <div class="p-3 font-weight-bold"
+           style="font-size: 1.5rem;"
+           (click)="displayToInput(currentCountry)">
+        {{currentCountry}}
+      </div>
+      <hr class="m-0">
+    </div>
+  </div>
+</div>
+

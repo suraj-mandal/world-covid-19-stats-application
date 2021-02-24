@@ -1,0 +1,19 @@
+.header-background {
+  transition: 0.5s all ease;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #e7e7e7;
+  /* box-shadow: none|h-offset v-offset blur spread color |inset|initial|inherit; */
+  /* For the fog-like glass effect */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.covid-background-video {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+}

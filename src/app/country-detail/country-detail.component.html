@@ -1,0 +1,99 @@
+<div style="font-family: 'poppins', sans-serif;">
+<!--  heading section-->
+  <div class="pb-2 pt-3 px-4 d-flex flex-row justify-content-center shadow-sm">
+    <h1 class="font-weight-bolder m-0"
+        style="flex: 1; font-size: 1.7rem;">
+      {{currentCountry}}</h1>
+    <button class="btn" (click)="closeScreen();">
+      <span><i class="fas fa-times" style="font-size: 1.4rem;"></i></span>
+    </button>
+  </div>
+<!--  OVERALL STATISTICS SECTION-->
+  <div class="px-5 py-4">
+    <div class="row">
+      <div class="col-3">
+        <div class="card border-0 shadow mx-auto p-3 d-flex flex-row text-white align-items-center" style="width: 90%; background: #FF0141;">
+          <div style="flex: 1;" class="text-center">
+            <h1 class="mb-1" style="font-size: 2rem; font-weight: bold;">{{liveConfirmedCount}}</h1>
+            <p class="mb-0">Total Cases</p>
+          </div>
+          <div style="width: 50px;">
+<!--            images will be shown here -->
+            <img src="assets/covid_19.svg" alt="covid-19-svg" class="img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="card border-0 shadow mx-auto p-3 d-flex flex-row text-white align-items-center" style="width: 90%; background: #3D0099;">
+          <div style="flex: 1;" class="text-center">
+            <h1 class="mb-1" style="font-size: 2rem; font-weight: bold;">{{liveRecoveryCount}}</h1>
+            <p class="mb-0">Recovered</p>
+          </div>
+          <div style="width: 50px;">
+            <!--            images will be shown here -->
+            <span><i class="fas fa-user-shield" style="font-size: 2.8rem;"></i></span>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="card border-0 shadow mx-auto p-3 d-flex flex-row align-items-center" style="width: 90%; background: #FFB901; color: #3A0195;">
+          <div style="flex: 1;" class="text-center">
+            <h1 class="mb-1" style="font-size: 2rem; font-weight: bold;">{{liveActiveCount}}</h1>
+            <p class="mb-0">Active Cases</p>
+          </div>
+          <div style="width: 50px;">
+            <!--            images will be shown here -->
+            <span><i class="fas fa-first-aid" style="font-size: 2.8rem"></i></span>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-3">
+        <div class="card border-0 shadow mx-auto p-3 d-flex flex-row text-white align-items-center" style="width: 90%; background: #FF4602;">
+          <div style="flex: 1;" class="text-center">
+            <h1 class="mb-1" style="font-size: 2rem; font-weight: bold;">{{liveDeathCount}}</h1>
+            <p class="mb-0">Total Deaths</p>
+          </div>
+          <div style="width: 50px;">
+            <!--            images will be shown here -->
+            <span><i class="fas fa-skull-crossbones" style="font-size: 2.8rem"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  END OF STATISTICS SECTION-->
+<!--  START OF THE CHARTS SECTIONS-->
+  <div class="container-fluid">
+    <div class="row" *ngIf="chartReady">
+      <!--    main chart here -->
+      <div class="col-12 col-md-6 " *ngFor="let currentChartData of finalChartData">
+        <canvas class="w-100 p-3 shadow-sm m-1" style="border-radius: 10px;" baseChart
+                [datasets]="currentChartData.lineChartData"
+                [labels]="dateLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="'line'"
+                [plugins]="lineChartPlugins"
+        >
+
+        </canvas>
+      </div>
+      <div class="col-12 col-md-6">
+
+      </div>
+      <!--    main chart ends here -->
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+
+      </div>
+      <div class="col-12 col-md-6">
+
+      </div>
+    </div>
+  </div>
+  </div>
+
